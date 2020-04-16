@@ -1,4 +1,4 @@
-#Komma Animation Library
+# Komma Animation Library
 
 Welcome at the Komma Animation Library or for short **KAL**.
 
