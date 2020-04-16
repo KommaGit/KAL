@@ -1,0 +1,178 @@
+/**
+ * Animation classes for the KAL package.
+ * KAl stands for Komma Animation Library
+ *
+ * There are different animation types that we can define,
+ * the name of which is used as the class, prefixed with 'kal-'
+ *
+ * When the plugin is activated an element that will be animated
+ * receives a extra state class
+ *
+ * When the element comes into view the plugin should swap
+ * to the final state
+
+ */
+/**
+ * Config
+ */
+/**
+* Easings
+*/
+/**
+ * Core
+ */
+[data-kal].is-kal-end {
+  /* fallback not needed, i think: */
+  transition-duration: var(--kal-duration, 350ms);
+  transition-delay: var(--kal-delay, 0s);
+  transition-timing-function: var(--kal-easing, ease);
+}
+
+[data-kal][data-kal-easing=linear] {
+  transition-timing-function: linear;
+}
+
+[data-kal][data-kal-easing=ease] {
+  transition-timing-function: ease;
+}
+
+[data-kal][data-kal-easing=ease-in] {
+  transition-timing-function: ease-in;
+}
+
+[data-kal][data-kal-easing=ease-out] {
+  transition-timing-function: ease-out;
+}
+
+[data-kal][data-kal-easing=ease-in-out] {
+  transition-timing-function: ease-in-out;
+}
+
+[data-kal][data-kal-easing=ease-in-cubic] {
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+[data-kal][data-kal-easing=ease-out-cubic] {
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-out-cubic] {
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-circ] {
+  transition-timing-function: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+}
+
+[data-kal][data-kal-easing=ease-out-circ] {
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-out-circ] {
+  transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+[data-kal][data-kal-easing=ease-in-expo] {
+  transition-timing-function: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+[data-kal][data-kal-easing=ease-out-expo] {
+  transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-out-expo] {
+  transition-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-quad] {
+  transition-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+[data-kal][data-kal-easing=ease-out-quad] {
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-kal][data-kal-easing=ease-in-out-quad] {
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+[data-kal][data-kal-easing=ease-in-quart] {
+  transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+}
+
+[data-kal][data-kal-easing=ease-out-quart] {
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-out-quart] {
+  transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-quint] {
+  transition-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+}
+
+[data-kal][data-kal-easing=ease-out-quint] {
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-out-quint] {
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-sine] {
+  transition-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+[data-kal][data-kal-easing=ease-out-sine] {
+  transition-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+[data-kal][data-kal-easing=ease-in-out-sine] {
+  transition-timing-function: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+[data-kal][data-kal-easing=ease-in-back] {
+  transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+[data-kal][data-kal-easing=ease-out-back] {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+[data-kal][data-kal-easing=ease-in-out-back] {
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/**
+ * Animations
+ */
+[data-kal|=fade].is-kal-start {
+  opacity: 0;
+}
+[data-kal|=fade].is-kal-end {
+  transition-property: opacity;
+  opacity: 1;
+}
+
+[data-kal=slide-up].is-kal-start {
+  opacity: 0;
+  transform: translateY(40px);
+}
+[data-kal=slide-up].is-kal-end {
+  transition-property: opacity, transform;
+  opacity: 1;
+  transform: none;
+}
+
+[data-kal=zoom-in].is-kal-start {
+  opacity: 0;
+  transform: scale(0.8);
+}
+[data-kal=zoom-in].is-kal-end {
+  transition-property: opacity, transform;
+  opacity: 1;
+  transform: none;
+}
+
+/*# sourceMappingURL=kal.css.map */

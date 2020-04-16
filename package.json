@@ -1,0 +1,11 @@
+{
+  "private": true,
+  "name": "@komma/kal",
+  "version": "0.0.1",
+  "description": "Komma Animation library for scroll based animation handling.",
+  "main": "kal.js",
+  "style": "kal.css",
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
