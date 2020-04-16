@@ -7,5 +7,9 @@
   "style": "kal.css",
   "keywords": [],
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KommaGit/kal.git"
+  },
   "license": "MIT"
 }
