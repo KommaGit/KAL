@@ -18,9 +18,12 @@ Take a look around our own basic website; http://kommabasic.nl/
 
 ## Installation
 
+Till we have version we use the direct git link.
+This will use the master branch.
+
 ```bash
-# With npm
-npm i @komma/kal
+# With npm 
+npm install --save https://github.com/KommaGit/kal.git
 ```
 
 ## Usage
