@@ -61,8 +61,6 @@ const KAL = {
             threshold: KAL.options.threshold,
         });
 
-        console.log(KAL.intersectionObserver);
-
         KAL.elements.forEach((element) => {
             KAL.intersectionObserver.observe(element);
             element.classList.add(KAL.startStateClass);
@@ -76,8 +74,6 @@ const KAL = {
      */
     onIntersection(entries, observer) {
         entries.forEach((entry) => {
-
-            console.log(entry.intersectionRatio);
 
             // When element's is in viewport and within threshold,
             // Trigger animation!

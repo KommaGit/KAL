@@ -28,6 +28,17 @@ npm install --save https://github.com/KommaGit/kal.git
 
 ## Usage
 
+First embed the scss file of the kal into your application scss.
+In our projects we usually use an ITCSS structure. 
+We recommend using a Library layer to embed this file into.
+The default variables should be above the scss.
+So for example;
+
+```script
+$kal-animation-duration: 1200ms !default;
+@import "~@komma/kal/kal";
+```
+
 Import the library into your app.js.
 And just run the init function.
 

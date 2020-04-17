@@ -16,6 +16,7 @@
 
 /**
  * Config
+ * FIXME: Finetune the animation settings for our liking
  */
 $kal-animation-duration: 350ms !default;
 $kal-animation-delay: 0s !default;
@@ -105,7 +106,7 @@ $kal-easings: (
 
 
 // Slide-up
-[data-kal='slide-up'] {
+[data-kal='slide-up'] { // FIXME: Finetune the animation for our liking
   &.#{$kal-start-position-class} {
     opacity: 0;
     transform: translateY($kal-slide-offset);
@@ -120,7 +121,7 @@ $kal-easings: (
 
 
 // Zoom-in
-[data-kal='zoom-in'] {
+[data-kal='zoom-in'] { // FIXME: Finetune the animation for our liking
   &.#{$kal-start-position-class} {
     opacity: 0;
     transform: scale($kal-zoom-in-scale);
