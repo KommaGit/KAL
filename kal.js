@@ -36,15 +36,15 @@ const KAL = {
     /** @type {IntersectionObserver} */
     intersectionObserver: null,
 
-    init() {
+    init: function () {
 
-        this.elements = document.querySelectorAll('*[data-'+ KAL.dataPrefix +']');
-        if(this.elements.length === 0 ) return;
-
-        if (!window.IntersectionObserver) {
+        if(window.IntersectionObserver === undefined) {
             console.warn('IntersectionObserver is not supported');
             return;
         }
+
+        KAL.elements = document.querySelectorAll('*[data-'+ KAL.dataPrefix +']');
+        if(KAL.elements.length === 0 ) return;
 
         KAL.createIntersectionObserver();
     },
@@ -53,7 +53,7 @@ const KAL = {
      * Create the Intersection Observer
      * and append the KAL elements into it.
      */
-    createIntersectionObserver() {
+    createIntersectionObserver: function () {
 
         KAL.intersectionObserver = new IntersectionObserver(KAL.onIntersection, {
             root: KAL.options.root,
@@ -61,7 +61,7 @@ const KAL = {
             threshold: KAL.options.threshold,
         });
 
-        KAL.elements.forEach((element) => {
+        KAL.elements.forEach(function (element) {
             KAL.intersectionObserver.observe(element);
             element.classList.add(KAL.startStateClass);
         });
@@ -72,8 +72,8 @@ const KAL = {
      * @param  {Array<IntersectionObserverEntry>} entries
      * @param  {IntersectionObserver} observer
      */
-    onIntersection(entries, observer) {
-        entries.forEach((entry) => {
+    onIntersection: function (entries, observer) {
+        entries.forEach(function (entry) {
 
             // When element's is in viewport and within threshold,
             // Trigger animation!
@@ -95,7 +95,7 @@ const KAL = {
     /**
      * Clear the intersection observer.
      */
-    clearIntersectionObserver() {
+    clearIntersectionObserver: function () {
       KAL.intersectionObserver.disconnect();
       KAL.intersectionObserver = null;
     },
@@ -106,7 +106,7 @@ const KAL = {
      * @param element
      * @param attribute
      */
-    getElementOption(element, attribute)
+    getElementOption: function (element, attribute)
     {
         const option = element.getAttribute('data-'+ KAL.dataPrefix + '-' + attribute);
 
@@ -130,7 +130,7 @@ const KAL = {
      * Trigger animation
      * @param {IntersectionObserverEntry} entry
      */
-    triggerAnimation(entry) {
+    triggerAnimation: function (entry) {
         const element = entry.target;
         element.classList.remove(KAL.startStateClass);
         element.classList.add(KAL.endStateClass);
@@ -140,11 +140,11 @@ const KAL = {
      * Reverse animation
      * @param {IntersectionObserverEntry} entry
      */
-    reverseAnimation(entry) {
+    reverseAnimation: function (entry) {
         const element = entry.target;
         element.classList.add(KAL.startStateClass);
         element.classList.remove(KAL.endStateClass);
     },
-}
+};
 
 export { KAL }
