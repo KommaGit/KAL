@@ -22,8 +22,8 @@ const KAL = {
      */
     options: {
         root: null,
-        rootMargin: '-10% 0% -10% 0%',
-        threshold: 0.5, // The visual percentage of component when animation is triggered
+        rootMargin: '-48px 0px -48px 0px', // offset from the edge of the intersection root
+        threshold: 0, // The visual percentage of component when animation is triggered
     },
 
     /**
@@ -77,7 +77,7 @@ const KAL = {
 
             // When element's is in viewport and within threshold,
             // Trigger animation!
-            if (entry.intersectionRatio >= KAL.options.threshold) {
+            if (entry.intersectionRatio > KAL.options.threshold) {
 
                 KAL.triggerAnimation(entry);
 

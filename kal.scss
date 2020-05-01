@@ -16,16 +16,26 @@
 
 /**
  * Config
- * FIXME: Finetune the animation settings for our liking
  */
-$kal-animation-duration: 350ms !default;
+
+// Class names to use for indicating position state
+$kal-start-position-class: 'is-kal-start' !default;
+$kal-end-position-class: 'is-kal-end' !default;
+
+// Default values to use in all animations
+$kal-animation-duration: 1400ms !default;
 $kal-animation-delay: 0s !default;
-$kal-slide-offset: 40px !default;
+
+
+// Slide-up animations
+$kal-slide-up-offset: 64px !default;
+$kal-slide-up-transform-duration: 1200ms !default;
+
+// Zoom animation
 $kal-zoom-in-scale: 0.8 !default;
 $kal-zoom-out-scale: 1.1 !default;
 
-$kal-start-position-class: 'is-kal-start';
-$kal-end-position-class: 'is-kal-end';
+
 
 
 /**
@@ -71,9 +81,6 @@ $kal-easings: (
 
 [data-kal] {
   &.#{$kal-end-position-class} {
-    /* fallback not needed, i think: */
-    //transition-duration: $kal-animation-duration;
-    //transition-delay: $kal-animation-delay;
     transition-duration: var(--kal-duration, $kal-animation-duration);
     transition-delay: var(--kal-delay, $kal-animation-delay);
     transition-timing-function: var(--kal-easing, map-get($kal-easings, 'ease'));
@@ -87,12 +94,15 @@ $kal-easings: (
 }
 
 
+
 /**
- * Animations
+ * Preset Animations
  */
 
 
-// Fade
+/* ------------------
+ * Fade
+ */
 [data-kal|='fade'] {
   &.#{$kal-start-position-class} {
     opacity: 0;
@@ -105,22 +115,29 @@ $kal-easings: (
 }
 
 
-// Slide-up
-[data-kal='slide-up'] { // FIXME: Finetune the animation for our liking
+/* ------------------
+ * Slide up
+ */
+[data-kal='slide-up'] {
   &.#{$kal-start-position-class} {
     opacity: 0;
-    transform: translateY($kal-slide-offset);
+    transform: translateY($kal-slide-up-offset);
   }
 
   &.#{$kal-end-position-class} {
     transition-property: opacity, transform;
+    transition-duration: $kal-animation-duration, $kal-slide-up-transform-duration;
+    transition-timing-function: cubic-bezier(.37,.01,0,.98);
     opacity: 1;
     transform: none;
   }
+
 }
 
 
-// Zoom-in
+/* ------------------
+ * Zoom-in
+ */
 [data-kal='zoom-in'] { // FIXME: Finetune the animation for our liking
   &.#{$kal-start-position-class} {
     opacity: 0;
