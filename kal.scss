@@ -23,13 +23,13 @@ $kal-start-position-class: 'is-kal-start' !default;
 $kal-end-position-class: 'is-kal-end' !default;
 
 // Default values to use in all animations
-$kal-animation-duration: 1400ms !default;
+$kal-animation-duration: 1200ms !default;
 $kal-animation-delay: 0s !default;
 
 
 // Slide-up animations
 $kal-slide-up-offset: 64px !default;
-$kal-slide-up-transform-duration: 1200ms !default;
+$kal-slide-up-transform-duration: 1000ms !default;
 
 // Zoom animation
 $kal-zoom-in-scale: 0.8 !default;
