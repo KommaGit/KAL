@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@komma/kal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Komma Animation library for scroll based animation handling.",
   "main": "kal.js",
   "style": "kal.css",
@@ -11,5 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/KommaGit/kal.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash.throttle": "^4.1.1"
+  }
 }
