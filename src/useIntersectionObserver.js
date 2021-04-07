@@ -47,7 +47,7 @@ export default function useIntersectionObserver(target, observerOptions) {
         root: null,
         rootMargin: '-48px 0px -48px 0px',
         threshold: 0,
-        once: false,
+        once: true,
     };
 
     /**
@@ -68,6 +68,7 @@ export default function useIntersectionObserver(target, observerOptions) {
 
     /** Manual callback when intersection event has occurred */
     const callback = ref(null);
+    const callbackBreaksIntersection = ref(false);
 
     let observer = IntersectionObserver;
     const observedElements = ref([]);
@@ -142,7 +143,7 @@ export default function useIntersectionObserver(target, observerOptions) {
             // // If manual callback has been defined, use that
             if(callback.value !== null){
                 callback.value(entry, observer);
-                return;
+                if(callbackBreaksIntersection.value) return;
             }
 
             intersectionRatio.value = entry.intersectionRatio;
@@ -154,7 +155,8 @@ export default function useIntersectionObserver(target, observerOptions) {
                 if(entries.length > 1) show(entry.target, (index * delayBetween.value));
                 else show(entry.target, 0);
 
-                if(options.once) unobserveTarget(entry.target);
+                if(!options.once && entry.target.dataset.kalOnce !== undefined) unobserveTarget(entry.target);
+                if(options.once && entry.target.dataset.kalMulti === undefined) unobserveTarget(entry.target);
                 return;
             }
 
