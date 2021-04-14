@@ -1,4 +1,5 @@
 import {onMounted, onUnmounted, ref} from "vue";
+import {isset} from "./utils";
 
 /**
  * Builder method to generate a step list for the threshold
@@ -84,7 +85,7 @@ export default function useIntersectionObserver(target, observerOptions) {
             target.value.classList.add(startStateClass.value);
             observedElements.value.push(target.value);
         }
-        else {
+        else if (isset(target.value.querySelectorAll)) {
             observedElements.value = Array.from(target.value.querySelectorAll('[data-kalable]'));
         }
 
