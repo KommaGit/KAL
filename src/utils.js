@@ -21,7 +21,7 @@ export function ucfirst(string) {
 }
 
 /**
- * Map a given value from withing a range to another.
+ * Map a given value from withing a range to another, so called interpolation.
  * So for example: 40 in range from 0 - 100, to range of 0 - 1, will give 0.4
  *
  * @param value
@@ -31,7 +31,7 @@ export function ucfirst(string) {
  * @param high2
  * @returns {*}
  */
-export function map_range(value, low1, high1, low2, high2) {
+export function interpolation(value, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
 }
 

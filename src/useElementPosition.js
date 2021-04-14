@@ -1,6 +1,7 @@
 import { onMounted, onUnmounted, onBeforeMount, ref } from "vue";
 import throttle from "lodash/throttle"
 import useSizes from "./useSizes";
+import {interpolation} from "./utils";
 
 export default function useElementPosition() {
 
@@ -11,10 +12,6 @@ export default function useElementPosition() {
     const aboveViewport = ref(false);
     const belowViewport = ref(true);
     const relativeViewportPosition = ref(0);
-
-    function map_range(value, low1, high1, low2, high2) {
-        return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
-    }
 
     /**
      * Get the element position related to the viewport.
@@ -43,7 +40,7 @@ export default function useElementPosition() {
         aboveViewport.value = false;
         belowViewport.value = false;
 
-        relativeViewportPosition.value = map_range(elementBoundingClient.top, windowHeight.value, observable.value.clientHeight * -1, 0, 1);
+        relativeViewportPosition.value = interpolation(elementBoundingClient.top, windowHeight.value, observable.value.clientHeight * -1, 0, 1);
     }
 
     // Use throttled of 16ms, this will result in 60fps
