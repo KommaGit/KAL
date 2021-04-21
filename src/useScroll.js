@@ -10,6 +10,8 @@ export default function useScroll(throttleDelay = 16) {
     const scrollDown = ref(true);
     const scrollUp = ref(false);
 
+    const scrollCallback = ref(null);
+
     function scrolled() {
 
         // Temporary store vertical scroll direction
@@ -22,6 +24,8 @@ export default function useScroll(throttleDelay = 16) {
 
         scrollX.value = window.pageXOffset;
         scrollY.value = scrollYPosition;
+
+        if(scrollCallback.value !== null) scrollCallback.value();
     }
 
     const throttledScrolled = throttle(scrolled, throttleDelay);
@@ -115,5 +119,7 @@ export default function useScroll(throttleDelay = 16) {
         scrollToElement,
         scrollToNextElement,
         scrollToNode,
+
+        scrollCallback,
     };
 }
