@@ -1,6 +1,6 @@
 import { onMounted, onUnmounted, onBeforeMount, ref, computed } from "vue";
 import throttle from "lodash.throttle"
-import useWindowSize from "./useSizes";
+import useSizes from "./useSizes";
 
 export default function useScroll(throttleDelay = 16) {
 
