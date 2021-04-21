@@ -6,9 +6,13 @@ export default function useSizes() {
     const windowWidth = ref(0);
     const windowHeight = ref(0);
 
+    const resizeCallback = ref(null);
+
     function resize() {
         windowWidth.value = window.innerWidth;
         windowHeight.value = window.innerHeight;
+
+        if(resizeCallback.value !== null) resizeCallback.value();
     }
 
     const throttledResize = throttle(resize, 100);
@@ -30,5 +34,6 @@ export default function useSizes() {
 
     return {
         windowWidth, windowHeight,
+        resizeCallback,
     };
 }
