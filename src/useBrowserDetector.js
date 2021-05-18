@@ -17,7 +17,6 @@ const unsupportedBrowsers = ref({
 
 export default function useBrowserDetector() {
 
-    debugger;
     if(browser.name === null) detectBrowser();
 
     function detectBrowser() {

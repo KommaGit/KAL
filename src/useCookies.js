@@ -1,36 +1,47 @@
 export default function useCookies() {
 
+
+
     /**
      * Set a cookie for name, value and optional days
      *
      * @param name
      * @param value
-     * @param days
+     * @param options
      */
-    const setCookie = (name, value, days) => {
+    const setCookie = (name, value, options) => {
 
-        let cookieString = name + "=" + value
+        options = {
+            path: '/',
+            // add other defaults here if necessary
+            ...options
+        };
 
-        if (days !== undefined) {
+        if (options.expires instanceof Date) {
+            options.expires = options.expires.toUTCString();
+        }
+
+        if (options.days !== undefined) {
+
             const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            cookieString += "; expires=" + date.toGMTString();
+            date.setTime(date.getTime() + (options.days * 24 * 60 * 60 * 1000));
+            options.expires = date.toUTCString();
+
+            delete options.days;
         }
 
-        cookieString += '; path=/';
 
+        let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
 
-        const host = location.host;
-        const domainParts = host.split('.');
-
-        // no "." in a domain - it's localhost or something similar
-        if(domainParts.length !== 1) {
-
-            domainParts.shift();
-            cookieString += '; domain=.' + domainParts.join('.');
+        for (let optionKey in options) {
+            updatedCookie += "; " + optionKey;
+            let optionValue = options[optionKey];
+            if (optionValue !== true) {
+                updatedCookie += "=" + optionValue;
+            }
         }
 
-        document.cookie = cookieString;
+        document.cookie = updatedCookie;
     }
 
 
