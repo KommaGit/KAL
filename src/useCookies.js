@@ -72,7 +72,7 @@ export default function useCookies() {
      * @param name
      */
     const eraseCookie  = (name) => {
-        setCookie(name, '', -1);
+        setCookie(name, '', {days: -1});
     }
 
     return {
