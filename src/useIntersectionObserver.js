@@ -47,7 +47,7 @@ export default function useIntersectionObserver(target, observerOptions) {
     const defaultOptions = {
         root: null,
         rootMargin: '-48px 0px -48px 0px',
-        threshold: 0,
+        threshold: buildThresholdList(10),
         once: true,
     };
 
